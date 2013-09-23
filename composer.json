@@ -1,0 +1,13 @@
+{
+  "name": "cpm/salesforce-sdk-php",
+  "description": "Salesforce SDK for PHP",
+  "type": "library",
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"  
+  },
+  "autoload": {
+    "psr-0": {
+      "Cpm": "src/"
+    }
+  }
+}

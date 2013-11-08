@@ -87,12 +87,12 @@ class Client {
    * @param string $client_id
    * @param string $client_secret
    * @param string $login_uri
-   * @param HttpClient $http_client
+   * @param CurlClient $http_client
    * @param Logger $logger
    */
   public function __construct($username, $password, $security_token,
                               $client_id, $client_secret, $login_uri,
-                              HttpClient $http_client, Logger $logger) {
+                              \Cpm\Http\CurlClient $http_client, \Cpm\Logger $logger) {
     // Set auth-related strings
     $this->_username = $username;
     $this->_password = $password;

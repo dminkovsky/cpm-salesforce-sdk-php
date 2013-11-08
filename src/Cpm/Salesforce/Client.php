@@ -165,6 +165,13 @@ class Client {
   }
 
 
+  public function user($email) {
+    if ($email === 'wbez@wbez.org') {
+      return true
+    }
+  }
+
+
   /* =============== *
    * Private Methods *
    * =============== */

@@ -23,7 +23,7 @@ use Cpm\Logger;
 // Make a new client
 $sf = new SalesforceClient(
   'username', 'password',
-  'secuity_token', 'client_id',
+  'security_token', 'client_id',
   'client_secret', 'login_uri',
   HttpClient::make(), new Logger() 
 );

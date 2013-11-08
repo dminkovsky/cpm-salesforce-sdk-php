@@ -5,9 +5,12 @@ namespace Cpm\Salesforce;
 /**
  * @method get
  * @method post
- * @link http://www.salesforce.com/us/developer/docs/api_rest/ Current docs, HTML
- * @link http://www.salesforce.com/us/developer/docs/api_rest/api_rest.pdf  Current docs, PDF
- * @link http://na1.salesforce.com/services/data/  List available API versions (content-type negotiated)
+ * @link http://www.salesforce.com/us/developer/docs/api_rest/
+ *       Current docs, HTML
+ * @link http://www.salesforce.com/us/developer/docs/api_rest/api_rest.pdf 
+ *       Current docs, PDF
+ * @link http://na1.salesforce.com/services/data/ 
+ *       List available API versions (content-type negotiated)
  */
 class Client {
 
@@ -24,19 +27,24 @@ class Client {
   /** @var string Appended to password */
   private $_security_token;
 
-  /** @var string The Consumer Key from the remote access application definition. */
+  /** @var string The Consumer Key from the remote access
+   *              application definition. */
   private $_client_id;
 
-  /** @var string The Consumer Secret from the remote access application definition. */
+  /** @var string The Consumer Secret from the remote access
+   *              application definition. */
   private $_client_secret;
 
-  /** @var string A token request endpoint, such as https://login.salesforce.com/services/oauth2/token */
+  /** @var string A token request endpoint, such as
+   *              https://login.salesforce.com/services/oauth2/token */
   private $_token_url;
 
-  /** @var string Identifies the Salesforce instance to which API calls should be sent. */
+  /** @var string Identifies the Salesforce instance to which
+   *              API calls should be sent. */
   private $_instance_url;
 
-  /** @var string Access token that acts as a session ID that the application uses for making requests. */
+  /** @var string Access token that acts as a session ID that
+   *              the application uses for making requests. */
   private $_access_token;
 
 
@@ -61,7 +69,8 @@ class Client {
    * Internal state booleans *
    **=======================**/
 
-  /** @var bool `true` if we have authenticated and have an instance url and access token */
+  /** @var bool `true` if we have authenticated and have an
+   *            instance url and access token */
   private $authenticated = false;
 
 
@@ -101,9 +110,11 @@ class Client {
   /**
    * Decorate API calls with `_authenticate()`.
    *
-   * This method wraps around `_get()` and `_post()` calls to the Salesforce API. It exposes them publically as
-   * `get()` and `post()`. These calls require pre-authentication and authorization, and if they are made before
-   * authentication is attempted before the API call is made.
+   * This method wraps around `_get()` and `_post()` calls to the
+   * Salesforce API. It exposes them publically as `get()` and
+   * `post()`. These calls require pre-authentication and
+   * authorization, and if they are made before authentication
+   * is attempted before the API call is made.
    *
    * @param string $method
    * @param array $args
@@ -113,15 +124,18 @@ class Client {
   public function __call($method, $args) {
     $private = "_$method";
 
-    // Only wrap around calls to `$this->get()` and `$this->post()`. Otherwise, fatal error as per default behavior.
+    // Only wrap around calls to `$this->get()` and `$this->post()`.
+    // Otherwise, fatal error as per default behavior.
     if (!in_array($private, array('_get', '_post'))) {
       // This will fatal error and crash the program.
       $this->$private();
     }
 
-    // Proceed if authenticated or attempt to authenticate if not authenticated, and then proceed.
-    if ($this->authenticated || (!$this->authenticated && $this->_authenticate())) {
-      return call_user_func_array(array($this, $private), $args);
+    // Proceed if authenticated or attempt to authenticate if not
+    // authenticated, and then proceed.
+    if ($this->authenticated ||
+      (!$this->authenticated && $this->_authenticate())) {
+        return call_user_func_array(array($this, $private), $args);
     }
     return false;
   }

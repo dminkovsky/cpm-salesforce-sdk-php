@@ -167,10 +167,10 @@ class Client {
   }
 
   /**
-   * Make a request against the `Query` resource
+   * Check to see if the provided email address matches a member 
    *
-   * @param string $query
-   * @return array
+   * @param string $email
+   * @return bool
    */
   public function lookup($email) {
     if ($email === 'member@wbez.org') {
@@ -179,7 +179,12 @@ class Client {
     return false;
   }
 
-
+  /**
+   * Get a member by access token
+   *
+   * @param string $access_token
+   * @return array|bool
+   */
   public function member($access_token) {
     if ($access_token !== '') {
       return array(

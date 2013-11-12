@@ -180,6 +180,46 @@ class Client {
   }
 
 
+  public function member($access_token) {
+    if ($access_token !== '') {
+      return array(
+        'name' => 'Member McMemberson',
+        'email' => 'member@wbez.org',
+        'billing_address' => array(
+          'address1' => '100 Palatino Rd',
+          'address2' => '',
+          'city' => 'Maple',
+          'state' => 'WI',
+          'postal' => '54854',
+          'country' => 'USA',
+        ),
+        'shipping_address' => array(
+          'address1' => '100 Palatino Rd',
+          'address2' => '',
+          'city' => 'Maple',
+          'state' => 'WI',
+          'postal' => '54854',
+          'country' => 'USA',
+        ),
+        'cc' => array(
+          'type' => 0,
+          'number' => '1111222233334444',
+          'exp' => array(
+            'month' => '12',
+            'year' => '2017',
+          ),
+        ),
+        'pledge' => 10,
+        'recent_transaction' => array(
+          'date' => '11/12/2013',
+          'amount' => 10,
+        ),
+        'subscriptions' => array(0, 2, 4)
+      );
+    }
+    return false;
+  }
+
   /* =============== *
    * Private Methods *
    * =============== */

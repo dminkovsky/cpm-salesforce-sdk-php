@@ -166,11 +166,17 @@ class Client {
     return $this->get("/services/data/v26.0/query/?q=$query");
   }
 
-
-  public function user($email) {
-    if ($email === 'wbez@wbez.org') {
+  /**
+   * Make a request against the `Query` resource
+   *
+   * @param string $query
+   * @return array
+   */
+  public function lookup($email) {
+    if ($email === 'member@wbez.org') {
       return true;
     }
+    return false;
   }
 
 
